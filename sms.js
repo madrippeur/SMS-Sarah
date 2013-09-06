@@ -2,11 +2,20 @@ exports.action = function(data, callback, config, SARAH) {
 var config = config.modules.sms;
 
   
-//ICI "MOTCLE", "COMMANDE", PENSER A NE PAS METTREDE VIRGULE A LA DERNIERE LIGNE 
+//ICI "MOTCLE", "COMMANDE", PENSER A NE PAS METTREDE VIRGULE A LA DERNIERE LIGNE VOUS AVEZ LE DROIT A AUTANT DE COMMANDES QUE VOUS VOULEZ
   var commandes = new Array();
   var commandes = [
-    "Lumieresoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=2",
-    "Lumiereson", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=2"
+    "Lumieresoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=-1",
+    "Lumiereson", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=-1",
+    "Tableon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=1",
+    "Tableoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=1",
+    "Salonon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=4",
+    "Salonoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=4",
+    "Sphereon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=3",
+    "Sphereoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=3",
+    "Couloiron", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=5",
+    "Couloiroff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=5",
+    "Teleoff", "http://127.0.0.1:8080/sarah/requete?requete=/tv/samsungremote.php?key=POWEROFF"
   ];
  
 
@@ -30,7 +39,20 @@ var config = config.modules.sms;
     
 	//EST CE UNE COMMANDE OU DU TEXTE ?
 	//CEST UNE COMMNANDE
-
+    
+  //Est ce que cest une demande pour avoir la liste descmds ?
+			if ( data.text == "Listecmd" ){
+        lst = "Liste des commandes disponibles :";
+        for (i = 0; i <= commandes.length-1; i++) {
+          var lst = lst + "%0D%0A" + commandes[i];
+          i++;
+        }
+   //on envoie sms avec les commandes
+        var request = require('request');
+        var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=' + lst;
+  			request({ 'uri' : url , method: "POST"}, function (err, response, body){});
+				calback();
+      }  
     //boucle pour tester si cest une commande
         for (i = 0; i < commandes.length; i++) {
           console.log(commandes[i]);
@@ -50,7 +72,12 @@ var config = config.modules.sms;
      			callback({'tts': "L'action n'a pas abouti !"});
       		return;
     		}
-        else { callback({'tts': "action effectuée"});
+        else { callback();
+              
+           var request = require('request');
+              var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Commande effectuée !';
+              request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
+              
 					return;}
         });
     } else {

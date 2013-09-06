@@ -3,6 +3,10 @@ Utilisation de SMS GATEWAY avec SARAH.
 
 DEPENDANCES : A PARTIR DE LA VERSION 0.3, NECESSITE LE PLUGIN ASKME DE VEYRET JEROME !
 
+Version 0.5 :
+		Mise en place d'une confirmation par sms lors de l'envoi d'une commande
+		Mise en place de la commande : Listecmd par sms qui permet de recevoir toutes les commandes disponibles par sms
+
 Version 0.4 :
 		Mise en place des commandes SMS, envoyez un sms à sarah aec un mot clé, et sarah agit en consequence !
 
