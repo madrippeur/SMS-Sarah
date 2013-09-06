@@ -1,0 +1,16 @@
+﻿<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rulesms" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+ <rule id="rulesms" scope="public">
+   <tag>out.action=new Object(); </tag> 
+   <!--EXEMPLE : Sarah envoi un message à gregory disant Coucou comment ca va ? -->
+		<item>Sarah</item>
+
+   <item>envoi un message à</item><tag> out.action.action='Sarah envoi un message à';</tag>
+
+		<one-of>
+			<item>Grégory<tag>out.action.phone="0606060606"; out.action.qui='Grégory ';</tag></item>
+			<item>Jessica<tag>out.action.phone="0606060606"; out.action.qui='Jessica ';</tag></item>
+		</one-of>
+   <item>disant<ruleref special="GARBAGE" /><tag>out.action._attributes.dictation="true"; out.action.clef='disant ';</tag></item>
+   <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/sms";</tag>
+ </rule> 
+</grammar>

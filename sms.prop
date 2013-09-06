@@ -1,0 +1,10 @@
+{
+	"modules": { 
+		"sms": {
+			"description": "permet d'envoyer un sms grâce à un portable équipé de Sms Gateway",
+			"version": "0.3",
+			"ip":"192.168.1.50",
+			"port":"9090"
+		}
+	}
+}

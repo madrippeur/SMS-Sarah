@@ -1,0 +1,31 @@
+
+<<<<<<< HEAD
+.plugin-gridster.xbmc .text {
+  background: #33A3EC;
+  left: 0; width: 100%; 
+  display: block;
+  text-align: center;
+}
+
+.plugin-gridster.sms .logo {
+  left: 10px; 
+  width: 100%; 
+}
+
+.plugin-gridster.sms .logo2 {
+  position: absolute;
+  top: 20px; 
+  left: 0px; 
+  width: 100%; 
+}
+=======
+.plugin-gridster.sms .front {
+  background: #FFFFFF url('images/sms.jpg') center 2px;
+  background-size:   160px 160px;
+  background-repeat: no-repeat;
+}
+
+.plugin-gridster.sms .back {
+  background: #FFFFFF;
+}
+>>>>>>> c69284b499653287fd9e27a76a45caa80f068f12

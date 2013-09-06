@@ -1,0 +1,33 @@
+
+<h1>Ce plugin Sarah permet d'utiliser le logiciel Sms Gateway sur un telephone Android.</h1><br>
+<h2>Materiel necessaire :</h2><br>
+ 1 : Un vieux telephone Android, avec ou sans batterie<br>
+ 2 : Installer le logiciel Sms Gateway (gratuit) sur celui-ci<br>
+ 3 : Un cordon Usb, ou un chargeur pour laisser le telephone en charge<br>
+ 4 : Un forfait mobile Low cost (genre free pour ne pas le citer a 0euros)<br>
+ 5 : PENSEZ A INSTALLER LE PLUGIN ASKME de Veyret Jerome : c'est une dependance obligatoire a partir de la version 0.3 !
+<br>
+<h2>Prerequis :</h2><br>
+ Installez le logiciel sms gateway comme indique <a href="http://www.abavala.com/2012/07/09/sms-gateway-une-passerelle-sms-a-la-maison/">ici</a><br>
+ Pensez a indiquer "http://IPSARAH:8080/sarah/sms" dans la case "Forward incoming sms to http"puis<br>
+ Penser a cocher la case "forward incoming sms to http"<br>
+ Donnez une IP FIXE a votre mobile en le connectant a votre reseau wifi<br>
+ Allumez bien le serveur sms sur le telephone<br>
+ Parametrez dans le fichier custon.prop l'ip et le port de votre Gatewaysms<br>
+ Dans le fichier sms.xml, pensez a introduire le prenom et le numero de telephone correctement<br>
+<br>
+<h2>ATTENTION :</h2><br>
+il sagit d'une version Beta. Tout fonctionne correctement excepte que :<br>
+lorsque l'on envoie un message vocalement, le contenu du message n'est pas toujours bien reconnu, parlez de maniere claire et forte<br>
+certains tests de debug n'ont pas ete faits, mais en theorie le foncionnement de base ne devrait pas poserde probleme<br>
+<br>
+<br>
+<br>
+<h2>Comment utiliser le plugin ?</h2><br>
+<br>
+- En interne, un plugin sarah doit faire appel a : http://127.0.0.1:8080/sarah/sms?phone=NUMBER&text=MESSAGE<br>
+- Ecrire un message vocalement : Dites Sarah envoi un message a PRENOM disant MESSAGE<br>
+Bien sur, il faudra remplir correctement le fichier sms.xml<br>
+Sarah va vous relire votre message, et si il correspond a votre souhait vous dites"OUI" pour envoyer ou "NON" pour annuler<br>
+- La reception de SMS est simple : Vous recevez un sms, Sarah vous donne le numero du correspondant et vous demande<br>
+si vous voulez lire le message, dites "OUI" ou "NON".
