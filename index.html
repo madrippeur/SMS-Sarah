@@ -25,9 +25,12 @@ certains tests de debug n'ont pas ete faits, mais en theorie le foncionnement de
 <br>
 <h2>Comment utiliser le plugin ?</h2><br>
 <br>
-- En interne, un plugin sarah doit faire appel a : http://127.0.0.1:8080/sarah/sms?phone=NUMBER&text=MESSAGE<br>
+- En interne, un plugin sarah doit faire appel a : http://127.0.0.1:8080/sarah/sms?phone=NUMBER&text=MESSAGE pour qu'un texto soit envoye<br>
 - Ecrire un message vocalement : Dites Sarah envoi un message a PRENOM disant MESSAGE<br>
 Bien sur, il faudra remplir correctement le fichier sms.xml<br>
 Sarah va vous relire votre message, et si il correspond a votre souhait vous dites"OUI" pour envoyer ou "NON" pour annuler<br>
 - La reception de SMS est simple : Vous recevez un sms, Sarah vous donne le numero du correspondant et vous demande<br>
-si vous voulez lire le message, dites "OUI" ou "NON".
+si vous voulez lire le message, dites "OUI" ou "NON".<br>
+- Les sms commandent Sarah !<br>
+Dans le fichier sms.js, vous pouvez maintenant parametrer un mot cle et une url d'action.<br>
+Concretement, envoyez par exemple Lumieresoff pour éteindre les ampoules Hue. Un exemple est fourni dans le .js
