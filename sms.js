@@ -1,19 +1,23 @@
 exports.action = function(data, callback, config, SARAH) {
 var config = config.modules.sms;
 
+  
+//ICI "MOTCLE", "COMMANDE", PENSER A NE PAS METTREDE VIRGULE A LA DERNIERE LIGNE 
+  var commandes = new Array();
+  var commandes = [
+    "Lumieresoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=2",
+    "Lumiereson", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=2"
+  ];
+ 
 
-//LES COMMANDES A EFFECTUER LORS DE LA RECEPTION DU MOT CLE  
-//ICI RESTE A FAIRE UNE BOUCLE POUR POUVOIR AJOUTER AUTANT DECOMMANDES QUON VEUX AVEC LES MOTS CLES
-var cle1='lumieresoff';
-var cmd1='http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=2';
   
 
  //AVONS NOUS LA CONFIGURATION MINIMALE REQUISE ? 
-if (( typeof config.ip == 'undefined') || ( typeof config.port == 'undefined')){
-    console.log("Erreur de configuration");
-    callback({});
-    return;
-  }  
+	if (( typeof config.ip == 'undefined') || ( typeof config.port == 'undefined')){
+		console.log("Erreur de configuration");
+		callback({});
+		return;
+	}  
 
   console.log('-----------------------------------------');
   console.log('Numero de tel : ' + data.phone); 
@@ -23,24 +27,34 @@ if (( typeof config.ip == 'undefined') || ( typeof config.port == 'undefined')){
    //SI data.smscenter EST DEFINI IL SAGIT DE LA RECPETION D UN SMS
   if ( typeof data.smscenter !== 'undefined'){
    console.log('MESSAGE RECU ! ');
+    
 	//EST CE UNE COMMANDE OU DU TEXTE ?
 	//CEST UNE COMMNANDE
-    if ( data.text == 'lumieresoff'){
+
+    //boucle pour tester si cest une commande
+        for (i = 0; i < commandes.length; i++) {
+          console.log(commandes[i]);
+          if ( data.text == commandes[i] ){
+            	i++;
+							var actionsms = commandes[i];
+          }
+          i++;
+        }
+
+    	if ( typeof actionsms !== 'undefined' ){
       	console.log('LE MESSAGE EST UNE COMMANDE');
-    		var url='http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=2';
+    		
   			var request = require('request');
-  			request({ 'uri' : url , method: "POST"}, function (err, response, body){
-    
-    		if (err || response.statusCode != 200) {
-      		callback({'tts': "L'action n'a pas abouti !"});
+  			request({ 'uri' : actionsms , method: "POST"}, function (err, response, body){
+        if (err || response.statusCode != 200) {
+     			callback({'tts': "L'action n'a pas abouti !"});
       		return;
     		}
-          else { callback({'tts': "action effectuée"});
-
-               return;}
+        else { callback({'tts': "action effectuée"});
+					return;}
         });
     } else {
-	//CEST DU TEXTE ON DECORTIQUE LENUM DE TEL POUR UNE LECTURE CORRECTE ET ONNE A MANGER A ASKME
+  	//CEST DU TEXTE ON DECORTIQUE LENUM DE TEL POUR UNE LECTURE CORRECTE ET ONNE A MANGER A ASKME
 					data.phone='0' + data.phone.charAt(3) + ' ' + data.phone.substr(4,2) + ' ' + data.phone.substr(6,2) + ' ' + data.phone.substr(8,2) + ' ' + data.phone.substr(10,2);
 		      console.log('Ce n est pas une action, on va utiliser askme');
       		var url='http://127.0.0.1:8080/sarah/askme?request={"question":"Message%20re%C3%A7u%20deux%20' + data.phone + '.%20Dois%20je%20le%20lire%20?","answer":["Oui",%20"Non"],"answervalue":["http://127.0.0.1:8080/sarah/parle?phrase=' + data.text + '.","http://127.0.0.1:8080/sarah/parle?phrase=compris."]}';
