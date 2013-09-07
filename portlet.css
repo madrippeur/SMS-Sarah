@@ -1,5 +1,3 @@
-
-
 .plugin-gridster.xbmc .text {
   background: #33A3EC;
   left: 0; width: 100%; 
@@ -18,7 +16,7 @@
   left: 0px; 
   width: 100%; 
 }
-=======
+
 .plugin-gridster.sms .front {
   background: #FFFFFF url('images/sms.jpg') center 2px;
   background-size:   160px 160px;
