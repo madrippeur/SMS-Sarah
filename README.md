@@ -6,6 +6,8 @@ Version 0.7 : UPDATE
 
 		Ajout de la possibilite d'utiliser un mot de passe avec SMS Gateway
 
+		Verification si message vocal vide ou non pour ne pasfaire planter askme
+
 Version 0.6 : UPDATE
 
 		Ajout d'une variable pour confirmation sms actif ou non

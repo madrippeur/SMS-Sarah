@@ -10,12 +10,12 @@ var config = config.modules.sms;
     "Lumiereson", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=-1",
     "Tableon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=1",
     "Tableoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=1",
-    "Salonon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=4",
-    "Salonoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=4",
+    "Salonon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=2",
+    "Salonoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=2",
     "Sphereon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=3",
     "Sphereoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=3",
-    "Couloiron", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=5",
-    "Couloiroff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=5",
+    "Couloiron", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=4",
+    "Couloiroff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=4",
     "Teleoff", "http://127.0.0.1:8080/sarah/requete?requete=/tv/samsungremote.php?key=POWEROFF"
   ];
  
