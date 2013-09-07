@@ -39,4 +39,4 @@ Version 0.1 : UPDATE
 
 		envoie de sms en vocal
 		
-		envoie de sms grace aune url sarah
+		envoie de sms grace a une url sarah
