@@ -2,6 +2,7 @@ Utilisation de SMS GATEWAY avec SARAH.
 
 DEPENDANCES : A PARTIR DE LA VERSION 0.3, NECESSITE LE PLUGIN ASKME DE VEYRET JEROME !
 
+
 Version 0.6 : UPDATE
 
 		Ajout d'une variable pour confirmationsms actif ou non

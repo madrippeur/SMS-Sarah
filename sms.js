@@ -20,7 +20,7 @@ var config = config.modules.sms;
   ];
  
 
-  
+  ////////////////////A PARTIR DE LA NE RIEN TOUCHER !
 
  //AVONS NOUS LA CONFIGURATION MINIMALE REQUISE ? 
 	if (( typeof config.ip == 'undefined') || ( typeof config.port == 'undefined')){
