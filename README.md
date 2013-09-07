@@ -2,23 +2,23 @@ Utilisation de SMS GATEWAY avec SARAH.
 
 DEPENDANCES : A PARTIR DE LA VERSION 0.3, NECESSITE LE PLUGIN ASKME DE VEYRET JEROME !
 
-Version 0.6 :
+Version 0.6 : UDPDATE
 		Ajout d'une variable pour confirmationsms actif ou non
 		
 		Correction de bugs
 		
-Version 0.5 :
+Version 0.5 : UDPDATE
 		Mise en place d'une confirmation par sms lors de l'envoi d'une commande
 		
 		Mise en place de la commande : Listecmd par sms qui permet de recevoir toutes les commandes disponibles par sms
 
-Version 0.4 :
+Version 0.4 : UDPDATE
 		Mise en place des commandes SMS, envoyez un sms a sarah aec un mot cle et sarah agit en consequence !
 
-Version 0.3 :
+Version 0.3 : UDPDATE
 		Mise en place d'un controle vocal par askme pour etre sur d'envoyer le bon message.
 
-Version 0.2 :
+Version 0.2 : UDPDATE
 		Ajout de la reception de sms avec demande a askme pour la lecture
 		
 		Mise en place pour les futurs ajouts de fonctions :
@@ -28,7 +28,8 @@ Version 0.2 :
 		Action a faire grace a un mot cle
 		
 
-Version 0.1 : 	Mise en place des operations de base
+Version 0.1 : UDPDATE
+		Mise en place des operations de base
 
 		envoie de sms en vocal
 		
