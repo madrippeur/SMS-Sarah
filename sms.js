@@ -50,7 +50,7 @@ var config = config.modules.sms;
         }
    //on envoie sms avec les commandes
         var request = require('request');
-        var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=' + lst;
+        var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=' + lst + '&password=' + config.password;
   			request({ 'uri' : url , method: "POST"}, function (err, response, body){});
 				calback();
       }  
@@ -77,7 +77,7 @@ var config = config.modules.sms;
           if ( config.smsconfirmation == "1" ){
             console.log('SMS DECONFIRMATION ENVOYE');
            var request = require('request');
-              var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Commande effectuée !';
+              var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Commande effectuée !' + '&password=' + config.password;
               request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
           }
           callback();    
@@ -117,7 +117,7 @@ var config = config.modules.sms;
         console.log('Texto : ' + data.text);
                 
     	// Build URL
-  		var url = 'http://' + config.ip + ':' + config.port + '/sendsms?phone=' + data.phone + '&text=' + data.text;
+  		var url = 'http://' + config.ip + ':' + config.port + '/sendsms?phone=' + data.phone + '&text=' + data.text + '&password=' + config.password;
   		console.log("Sending request to : " + url);
 		// Send Request
   		var request = require('request');
