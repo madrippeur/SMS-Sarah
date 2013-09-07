@@ -140,6 +140,11 @@ var config = config.modules.sms;
         console.log('DICTEE :' + data.dictation);
   		message=data.dictation.slice( data.action.length + data.qui.length + data.clef.length + 1 ,data.dictation.length );     
         console.log('MESSAGE : ' + message );
+		if ( message.length < "2"){
+          SARAH.speak('Le message à envoyer est vide, recommence !');
+          callback({});
+          return;
+        }
         data.phone2=data.phone.substr(0,2) + ' ' + data.phone.substr(2,2) + ' ' + data.phone.substr(4,2) + ' ' + data.phone.substr(6,2) + ' ' + data.phone.substr(8,2);
 	//LE MESSAGE EST ENVOYE A ASKME POUR ETRE SUR QUIL NOUS CONVIENNE
     	// Build URL
