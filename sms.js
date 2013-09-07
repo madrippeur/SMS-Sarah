@@ -2,7 +2,7 @@ exports.action = function(data, callback, config, SARAH) {
 var config = config.modules.sms;
 
   
-//ICI "MOTCLE", "COMMANDE", PENSER A NE PAS METTREDE VIRGULE A LA DERNIERE LIGNE VOUS AVEZ LE DROIT A AUTANT DE COMMANDES QUE VOUS VOULEZ
+//ICI "MOTCLE", "COMMANDE", PENSER A NE PAS METTREDE VIRGULE A LA DERNIERE LIGNE 
   var commandes = new Array();
   var commandes = [
     "Lumieresoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=-1",
@@ -72,12 +72,14 @@ var config = config.modules.sms;
      			callback({'tts': "L'action n'a pas abouti !"});
       		return;
     		}
-        else { callback();
-              
+        else {
+          if ( config.smsconfirmation == "1" ){
+            console.log('SMS DECONFIRMATION ENVOYE');
            var request = require('request');
               var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Commande effectuée !';
               request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
-              
+          }
+          callback();    
 					return;}
         });
     } else {
@@ -121,21 +123,14 @@ var config = config.modules.sms;
   		request({ 'uri' : url , method: "POST"}, function (err, response, body){
     
     	if (err || response.statusCode != 200) {
-      		callback({'tts': "L'action n'a pas abouti !"});
-      		return;
-    	}
-        else { callback({'tts': "Message envoyé"});}
+    		SARAH.speak("Message non envoyé");
+        callback({});
+        	}
+        else { 
+          			SARAH.speak("Message envoyé");
+                callback({});}
         });
-      				var url = 'http://127.0.0.1:8080/sarah/parle?phrase="Message envoyé"';
-      				var request = require('request');
-      				request({ 'uri' : url , method: "POST"}, function (err, response, body){
     
-    						if (err || response.statusCode != 200) {
-                  callback({});
-      					return;
-    						}
-        				else { callback({});}
-        				});
   	}
 	//ENVOIE SMS PAR LA VOIX
 
@@ -147,7 +142,7 @@ var config = config.modules.sms;
         data.phone2=data.phone.substr(0,2) + ' ' + data.phone.substr(2,2) + ' ' + data.phone.substr(4,2) + ' ' + data.phone.substr(6,2) + ' ' + data.phone.substr(8,2);
 	//LE MESSAGE EST ENVOYE A ASKME POUR ETRE SUR QUIL NOUS CONVIENNE
     	// Build URL
-        var url = 'http://192.168.1.109:8080/sarah/askme?request={%22question%22:%22Message%20a%20' + data.phone2 + '.%20Le%20message%20est%20:%20' + message + '.%20Dois%20je%20envoyer%20?%22,%22answer%22:[%22oui%22,%22non%22],%22answervalue%22:[%22http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '%26text=Message%20vocal%20:%20' + message + '%22,%22http://127.0.0.1:8080/sarah/parle?phrase=Annulation%22],%22no_answervalue%22:%22http://127.0.0.1:8080/sarah/parle?phrase=Annulation%22,%22timeout%22:30,%22recall%22:false}';
+        var url = 'http://127.0.0.1:8080/sarah/askme?request={%22question%22:%22Message%20a%20' + data.phone2 + '.%20Le%20message%20est%20:%20' + message + '.%20Dois%20je%20envoyer%20?%22,%22answer%22:[%22oui%22,%22non%22],%22answervalue%22:[%22http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '%26text=Message%20vocal%20:%20' + message + '%22,%22http://127.0.0.1:8080/sarah/parle?phrase=Annulation%22],%22no_answervalue%22:%22http://127.0.0.1:8080/sarah/parle?phrase=Annulation%22,%22timeout%22:30,%22recall%22:false}';
   		console.log("Message askme : " + url);
 		// Send Request
   		var request = require('request');
