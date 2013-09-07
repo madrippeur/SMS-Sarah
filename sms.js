@@ -95,8 +95,15 @@ var config = config.modules.sms;
       			callback({'tts': "L'action n'a pas abouti !"});
       			return;
     			}
-          else { callback({'tts': "action effectuée"});
-               return;}
+          else {
+            if ( config.smsconfirmation == "1" ){
+            console.log('SMS DECONFIRMATION ENVOYE');
+            var request = require('request');
+            var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Sms reçu !' + '&password=' + config.password;
+              request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
+          	}
+            callback({});
+            return;}
         });
       callback({});
     }
