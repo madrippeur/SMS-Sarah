@@ -1,6 +1,7 @@
 exports.action = function(data, callback, config, SARAH) {
 var config = config.modules.sms;
 
+
   
 //ICI "MOTCLE", "COMMANDE", PENSER A NE PAS METTREDE VIRGULE A LA DERNIERE LIGNE 
   var commandes = new Array();
