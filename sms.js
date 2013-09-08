@@ -16,7 +16,9 @@ exports.action = function(data, callback, config, SARAH) {
 		"Sphereoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=3",
 		"Couloiron", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=4",
 		"Couloiroff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=4",
-		"Teleoff", "http://127.0.0.1:8080/sarah/requete?requete=/tv/samsungremote.php?key=POWEROFF"
+		"Teleoff", "http://127.0.0.1:8080/sarah/requete?requete=/tv/samsungremote.php?key=POWEROFF",
+		"Neonoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=5",
+		"Neonon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=5"
 	];
  
 
