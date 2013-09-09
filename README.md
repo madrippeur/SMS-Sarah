@@ -2,6 +2,9 @@ Utilisation de SMS GATEWAY avec SARAH.
 
 DEPENDANCES : A PARTIR DE LA VERSION 0.3, NECESSITE LE PLUGIN ASKME DE VEYRET JEROME !
 
+Version 0.8 : UPDATE
+		Amelioration du codage
+
 Version 0.7 : UPDATE
 
 		Ajout de la possibilite d'utiliser un mot de passe avec SMS Gateway

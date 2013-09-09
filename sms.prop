@@ -2,7 +2,7 @@
 	"modules": { 
 		"sms": {
 			"description": "permet d'envoyer un sms grace a un portable equipe de Sms Gateway",
-			"version": "0.6",
+			"version": "0.8",
 			"ip":"",
 			"port":"",
 			"password":"",
