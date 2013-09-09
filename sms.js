@@ -78,10 +78,10 @@ exports.action = function(data, callback, config, SARAH) {
 					if ( config.smsconfirmation == "1" ){
 						console.log('SMS DECONFIRMATION ENVOYE');
 						var request = require('request');
-						var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Commande effectuée !' + '&password=' + config.password;
-						request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
+						var url = 'http://' + config.ip + ':' + config.port + '/sendsms?phone=' + data.phone + '&text=Commande reçue !&password=' + config.password;
+            request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
 					}
-					callback();    
+          callback({});    
 					return;
 				}
 			});
@@ -99,8 +99,10 @@ exports.action = function(data, callback, config, SARAH) {
 					if ( config.smsconfirmation == "1" ){
 						console.log('SMS DECONFIRMATION ENVOYE');
 						var request = require('request');
-						var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Sms reçu !' + '&password=' + config.password;
-						request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
+						//var url = 'http://127.0.0.1:8080/sarah/sms?phone=' + data.phone + '&text=Sms reçu !' + '&password=' + config.password;
+						var url = 'http://' + config.ip + ':' + config.port + '/sendsms?phone=' + data.phone + '&text=Sms reçu !&password=' + config.password;
+
+            request({ 'uri' : url , method: "POST"}, function (err, response, body){});   
 					}
 					callback({});
 					return;
