@@ -2,6 +2,7 @@ exports.action = function(data, callback, config, SARAH) {
 	var config = config.modules.sms;
 	//Numero de tel des admin
   	var admin = new Array();
+	//AJOUTER ICI LES NUM DE CEUX QUI PEUVENT ENVOYER DES COMMANDES !
 	var admin = [
     "+33606060606", "+33606060606"
     ];
