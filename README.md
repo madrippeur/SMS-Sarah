@@ -2,7 +2,13 @@ Utilisation de SMS GATEWAY avec SARAH.
 
 DEPENDANCES : A PARTIR DE LA VERSION 0.3, NECESSITE LE PLUGIN ASKME DE VEYRET JEROME !
 
+
+Version 0.9 : UPDATE
+
+		Ajout d'une vérification sur le droit d'envoyer une commande par sms. Les numeros des admins sont à renseigner dans le fichier .js
+		
 Version 0.8 : UPDATE
+
 		Amelioration du codage
 
 Version 0.7 : UPDATE

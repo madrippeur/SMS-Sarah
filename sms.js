@@ -1,6 +1,10 @@
 exports.action = function(data, callback, config, SARAH) {
 	var config = config.modules.sms;
-
+	//Numero de tel des admin
+  	var admin = new Array();
+	var admin = [
+    "+33606060606", "+33606060606"
+    ];
 
   
 	//ICI "MOTCLE", "COMMANDE", PENSER A NE PAS METTREDE VIRGULE A LA DERNIERE LIGNE 
@@ -18,8 +22,9 @@ exports.action = function(data, callback, config, SARAH) {
 		"Couloiroff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=4",
 		"Teleoff", "http://127.0.0.1:8080/sarah/requete?requete=/tv/samsungremote.php?key=POWEROFF",
 		"Neonoff", "http://127.0.0.1:8080/sarah/phue?todo=1&param=off&room=5",
-		"Neonon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=5"
-	];
+		"Neonon", "http://127.0.0.1:8080/sarah/phue?todo=1&param=on&room=5",
+		"Merci", "http://127.0.0.1:8080/sarah/sms?phone=" + data.phone + "&text=Mais%20de%20rien%20!"
+  ];
  
 
 	////////////////////A PARTIR DE LA NE RIEN TOUCHER !
@@ -39,12 +44,25 @@ exports.action = function(data, callback, config, SARAH) {
 	//SI data.smscenter EST DEFINI IL SAGIT DE LA RECPETION D UN SMS
 	if ( typeof data.smscenter !== 'undefined'){
 		console.log('MESSAGE RECU ! ');
-    
+
+		
+		    //EST CE UN NUM ADMIN ?
+			for (i = 0; i < admin.length; i++) {
+				if ( data.phone == admin[i] ){
+						var admin = "1";
+        } else {
+						var admin ="0";
+        }
+			}
+
+    console.log('ADMIN : ' + admin );
+
+
 		//EST CE UNE COMMANDE OU DU TEXTE ?
 		//CEST UNE COMMNANDE
     
 		//Est ce que cest une demande pour avoir la liste descmds ?
-		if ( data.text == "Listecmd" ){
+		if (( data.text == "Listecmd" ) && (admin == "1")){
 			lst = "Liste des commandes disponibles :";
 			for (i = 0; i <= commandes.length-1; i++) {
 				var lst = lst + "%0D%0A" + commandes[i];
@@ -56,18 +74,21 @@ exports.action = function(data, callback, config, SARAH) {
 			request({ 'uri' : url , method: "POST"}, function (err, response, body){});
 			callback();
 		}  
-    
+       
+        
+        var actionsms = commandes[i];
 		//boucle pour tester si cest une commande
 		for (i = 0; i < commandes.length; i++) {
-			console.log(commandes[i]);
-			if ( data.text == commandes[i] ){
+			if (( data.text == commandes[i] ) && (admin == "1")){
 				i++;
 				var actionsms = commandes[i];
 			}
 			i++;
 		}
+    console.log('commande : ' + data.text);
+    console.log('action : ' + actionsms);
 
-		if ( typeof actionsms !== 'undefined' ){
+		if (( typeof actionsms !== 'undefined' ) && (admin == "1")){
 			console.log('LE MESSAGE EST UNE COMMANDE');
 			var request = require('request');
 			request({ 'uri' : actionsms , method: "POST"}, function (err, response, body){
