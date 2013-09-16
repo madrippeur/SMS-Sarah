@@ -48,7 +48,7 @@ exports.action = function(data, callback, config, SARAH) {
 
 		
 		    //EST CE UN NUM ADMIN ?
-			for (i = 0; i < admin.length; i++) {
+			for (i = "0"; i < admin.length; i++) {
 				if ( data.phone == admin[i] ){
 						var admin = "1";
         } else {
