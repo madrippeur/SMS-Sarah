@@ -4,7 +4,8 @@ exports.action = function(data, callback, config, SARAH) {
   	var admin = new Array();
 	//AJOUTER ICI LES NUM DE CEUX QUI PEUVENT ENVOYER DES COMMANDES !
 	var admin = [
-    "+33606060606", "+33606060606"
+    "+33606060606",
+    "+33606060606"
     ];
 
   
@@ -45,25 +46,26 @@ exports.action = function(data, callback, config, SARAH) {
 	//SI data.smscenter EST DEFINI IL SAGIT DE LA RECPETION D UN SMS
 	if ( typeof data.smscenter !== 'undefined'){
 		console.log('MESSAGE RECU ! ');
+console.log( "longueur : " + admin.length);
 
-		
 		    //EST CE UN NUM ADMIN ?
-			for (i = "0"; i < admin.length; i++) {
-				if ( data.phone == admin[i] ){
-						var admin = "1";
+			for (a = 0; a < admin.length; a++) {
+        console.log( "num testé : " + admin[a]);
+				if ( data.phone == admin[a] ){
+						var adminok = "1"; break;
         } else {
-						var admin ="0";
+						var adminok = "0";
         }
 			}
 
-    console.log('ADMIN : ' + admin );
+    console.log('ADMIN : ' + adminok );
 
 
 		//EST CE UNE COMMANDE OU DU TEXTE ?
 		//CEST UNE COMMNANDE
     
 		//Est ce que cest une demande pour avoir la liste descmds ?
-		if (( data.text == "Listecmd" ) && (admin == "1")){
+		if (( data.text == "Listecmd" ) && (adminok == "1")){
 			lst = "Liste des commandes disponibles :";
 			for (i = 0; i <= commandes.length-1; i++) {
 				var lst = lst + "%0D%0A" + commandes[i];
@@ -80,7 +82,7 @@ exports.action = function(data, callback, config, SARAH) {
         var actionsms = commandes[i];
 		//boucle pour tester si cest une commande
 		for (i = 0; i < commandes.length; i++) {
-			if (( data.text == commandes[i] ) && (admin == "1")){
+			if (( data.text == commandes[i] ) && (adminok == "1")){
 				i++;
 				var actionsms = commandes[i];
 			}
@@ -89,7 +91,7 @@ exports.action = function(data, callback, config, SARAH) {
     console.log('commande : ' + data.text);
     console.log('action : ' + actionsms);
 
-		if (( typeof actionsms !== 'undefined' ) && (admin == "1")){
+		if (( typeof actionsms !== 'undefined' ) && (adminok == "1")){
 			console.log('LE MESSAGE EST UNE COMMANDE');
 			var request = require('request');
 			request({ 'uri' : actionsms , method: "POST"}, function (err, response, body){
