@@ -2,6 +2,9 @@ Utilisation de SMS GATEWAY avec SARAH.
 
 DEPENDANCES : A PARTIR DE LA VERSION 0.3, NECESSITE LE PLUGIN ASKME DE VEYRET JEROME !
 
+Version 1 : UPDATE
+		Reecriture d'une partie du plugin.
+		Utilisation des commandes en POST pour envoyer a manger a Askme.
 
 Version 0.9 : UPDATE
 
